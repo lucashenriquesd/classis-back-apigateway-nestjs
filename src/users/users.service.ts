@@ -21,6 +21,12 @@ export class UsersService {
     return this.repository.find({ name });
   }
 
+  findAllUsers(limit: number) {
+    return this.repository.find({
+      take: limit,
+    });
+  }
+
   async update(uuid: string, attributes: Partial<User>) {
     const user = await this.findOne(uuid);
     if (!user) {
